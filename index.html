@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/pokeball-4.png">
     <script src="script.js"></script>
 </head>
 <body onload="loadAllPokemon()">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 
-    <div class="d-none" id="popup">
-
+    <div class="d-none card-content" id="popup">
+        <div class="popup-content">
+            <div class="card-header" id="card-header"></div>
+            <div class="card-info" id="card-info">
+                <nav class="navbar">
+                    <ul class="ul-info">
+                        <li><a onclick="openAbout()">About</a></li>
+                        <li><a onclick="openBaseStats()">Base Stats</a></li>
+                    </ul>
+                </nav>
+                <div class="info-cont" id="info-cont">
+                </div>
+                <div class="chart-cont d-none" id="chart-cont">
+                    <canvas id="myChart" width="100px" height="100px"></canvas>
+                </div>         
+            </div>
+        </div>
     </div>
 
     <header>
         <h1>Pokédex</h1>
-        <div>
-            <input type="search" id="search" class="search-field" placeholder="search Pokemon...">
-            <button onclick="refreshPage()" class="button-refresh"></button>
+        <div class="search-container ">
+            <input onkeydown="filterNames()" type="text" id="search" class="search-field" placeholder="search Pokemon...">
+            <button onclick="filterNames()" class="button-search">Search</button>
         </div>
     </header>
     <hr>
@@ -25,6 +42,9 @@
     <div id="main-content" class="main-content"></div>
     <div id="main-content-types" class="main-content-types"></div>
 
+    <div class="button-div">
+        <button class="load-button" onclick="loadMorePokemon()">Load more</button>
+    </div>
 
 </body>
 </html>
